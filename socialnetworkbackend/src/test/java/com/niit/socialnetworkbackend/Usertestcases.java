@@ -29,16 +29,16 @@ public class Usertestcases {
 		//get the userDAO from context
 				userDao =  (UserDao) context.getBean("userDao");
 	}
-	@Ignore
+	
 	@Test
 	public void createUserTestCase()
 	{
 				
 	User user=new User();
 
-	user.setFirstname("sravana");
-	user.setLastname("sandhya");
-	user.setEmail("sravs@gmail.com");
+	user.setFirstname("sravana1");
+	user.setLastname("sandhya1");
+	user.setEmail("sravs1@gmail.com");
 	user.setPassword("sravs");
 	user.setRole("STUDENT");
 	user.setPhonenumber("9842563515");
@@ -50,7 +50,7 @@ public class Usertestcases {
 	
 	}
 
-	
+	@Ignore
 	@Test
 	public void uniqueEmailIdTest()
 	{
@@ -61,7 +61,7 @@ user.setEmail("sandhya@gmail.com");
 		
 		assertEquals("unique email id failure", false, status);
 	}
-
+	@Ignore
 	@Test
 	public void getUserDetails()
 	{
@@ -82,7 +82,7 @@ user.setEmail("sandhya@gmail.com");
 
 	
 	
-	
+	 
 	
 	
 	

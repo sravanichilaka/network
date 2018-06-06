@@ -5,3 +5,4 @@ com\niit\configuration\WebConfiguratin.class
 com\niit\dao\UserDao.class
 com\niit\configuration\WebAppInitializer.class
 com\niit\dao\UserDaoImpl.class
+com\niit\model\ErrorClazz.class
