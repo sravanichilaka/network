@@ -2,7 +2,10 @@ com\niit\model\User.class
 com\niit\socialnetworkbackend\App.class
 com\niit\configuration\DataBaseConfiguration.class
 com\niit\configuration\WebConfiguratin.class
+com\niit\dao\JobDao.class
 com\niit\dao\UserDao.class
 com\niit\configuration\WebAppInitializer.class
+com\niit\dao\JobDaoImpl.class
 com\niit\dao\UserDaoImpl.class
+com\niit\model\Job.class
 com\niit\model\ErrorClazz.class
