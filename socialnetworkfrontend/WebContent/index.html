@@ -14,7 +14,7 @@
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css"
 	rel="stylesheet" />
 
-</head>
+</head> 
 <body ng-app="app">
 <header>
             <nav class="navbar navbar-inverse">
@@ -28,11 +28,22 @@
         <span class="icon-bar"></span>
       </button>
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#/"><img src="resources/images/niit.jpg" width="130" height="30"></a>
+                    <a class="navbar-brand" href="#/"><img src="resources/images/s1.jpg" width="130" height="30"></a>
                 </div>
 <div class="collapse navbar-collapse" id="collapse-example">
                 <ul class="nav navbar-nav ">
            <li><a href="#/home">Home</a></li>
+           
+<li class="dropdown"><a href="" class="dropdown-toggle"
+		data-toggle="dropdown" ng-show="loggedInUser.firstname!=undefined">Job<b class="caret"></b></a>
+			<ul class="dropdown-menu">
+				<li><a href="#/addjob" ng-show="loggedInUser.role=='ADMIN'">Add Job</a></li>
+				<li><a href="#/activejobs">Get Jobs</a></li>
+				<li><a href="#/inactivejobs" ng-show="loggedInUser.role=='ADMIN'">Inactive jobs</a>		
+		</ul>	</li>
+
+            
+            
            <li><a href="#/updateprofile" ng-show="loggedInUser.firstname!=undefined">Welcome {{loggedInUser.firstname}} &nbsp; {{loggedInUser.lastname}}</a></li>
            <li><a href="" ng-click="logout()" ng-show="loggedInUser.firstname!=undefined">Sign out</a></li>
            <li><a href="#/registration" ng-show="loggedInUser.firstname==undefined">Sign Up</a></li>
@@ -58,6 +69,8 @@
 <script type="text/javascript" src="controllers/usercontroller.js"></script>
 <script type="text/javascript" src="services/userservice.js"></script>
 
+<script type="text/javascript" src="controllers/jobcontroller.js"></script>
+<script type="text/javascript" src="services/jobservice.js"></script>
 
 
 
