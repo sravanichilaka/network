@@ -1,11 +1,15 @@
+
 package com.niit.configuration;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 //web.xml file in project 1
 public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer{
   public  WebAppInitializer() {
-      System.out.println("WEBAPPINITIALIZER is Instantiated");
+ 
+	  System.out.println("WEBAPPINITIALIZER is Instantiated");
+
 }
+  
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
 		return new Class[]{DataBaseConfiguration.class};
@@ -21,6 +25,7 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
 		return new String[]{"/"};
 	}
 
-}
+
+} 
 
 

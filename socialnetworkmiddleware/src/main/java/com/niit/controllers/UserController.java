@@ -15,7 +15,7 @@ import com.niit.dao.UserDao;
 import com.niit.model.ErrorClazz;
 import com.niit.model.User;
 
-@RestController
+ @RestController
 public class UserController {
 	
 	public UserController(){
