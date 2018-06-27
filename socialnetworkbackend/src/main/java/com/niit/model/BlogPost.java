@@ -2,6 +2,7 @@ package com.niit.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,9 +18,11 @@ public class BlogPost {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
-	private String blogTittle;
+	@Column(nullable=false)
+	private String blogTitle;
 	@Lob
-	private String blogcontent;
+	@Column(nullable=false)
+	private String blogContent;
 	private Date PostedOn;
 	@ManyToOne
 	private User PostedBy;
@@ -31,17 +34,17 @@ public class BlogPost {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getBlogTittle() {
-		return blogTittle;
+	public String getBlogTitle() {
+		return blogTitle;
 	}
-	public void setBlogTittle(String blogTittle) {
-		this.blogTittle = blogTittle;
+	public void setBlogTitle(String blogTitle) {
+		this.blogTitle = blogTitle;
 	}
-	public String getBlogcontent() {
-		return blogcontent;
+	public String getBlogContent() {
+		return blogContent;
 	}
-	public void setBlogcontent(String blogcontent) {
-		this.blogcontent = blogcontent;
+	public void setBlogContent(String blogContent) {
+		this.blogContent = blogContent;
 	}
 	public Date getPostedOn() {
 		return PostedOn;
@@ -67,6 +70,8 @@ public class BlogPost {
 	public void setLikes(int likes) {
 		this.likes = likes;
 	}
+	
+	
 	
 
 }
