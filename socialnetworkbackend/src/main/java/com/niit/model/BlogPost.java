@@ -25,7 +25,7 @@ public class BlogPost {
 	private String blogContent;
 	private Date PostedOn;
 	@ManyToOne
-	private User PostedBy;
+	private User PostedBy; // FK postedBy_ 	email
 	private boolean approved;
 	private int likes;
 	public int getId() {
