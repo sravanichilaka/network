@@ -14,6 +14,36 @@
 <link
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css"
 	rel="stylesheet" />
+	 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+     
+   
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    
+  
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
+<link
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css"
+	rel="stylesheet" />
+
+
+ <li><a href="#profilepic" ng-show="loggedInUser.firstname">
+                    <img src="http://localhost:8080/project2middleware/getprofilepic/{{loggedInUser.email}}" alt="upload Picture" width="30px" height="30px" class="img-rounded">
+                    </a></li>
+
+<!--<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.js"></script>
+	  
+	
+<script type="text/javascript"
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	  
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+      <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css">
+     
+-->
+
+	
 <link href="/resource/css/color.css"=rel="stylesheet">
 </head> 
 <body ng-app="app">
@@ -51,6 +81,10 @@
 				<li><a href="#/blogswaitingforapproval" ng-show="loggedInUser.role=='ADMIN'">Blogs Waiting For Approval</a>
 		        
             </ul></li>
+                          
+                    
+            
+           <li><a href="#/updateprofilepic"><img src ="http://localhost:8090/socialnetworkmiddleware/getimage/{{loggedInUser.email}}"alt="UploadProfilePic"></a></li>
            <li><a href="#/updateprofile" ng-show="loggedInUser.firstname!=undefined">Welcome {{loggedInUser.firstname}} &nbsp; {{loggedInUser.lastname}}</a></li>
            <li><a href="" ng-click="logout()" ng-show="loggedInUser.firstname!=undefined">Sign out</a></li>
            <li><a href="#/registration" ng-show="loggedInUser.firstname==undefined">Sign Up</a></li>

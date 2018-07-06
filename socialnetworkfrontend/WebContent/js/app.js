@@ -57,6 +57,11 @@ app.config(function($routeProvider){
 		controller:'BlogInDetailCtrl',
 		templateUrl:'views/blogapprovalform.html' 
 	})
+	.when('/updateprofilepic',{
+		
+			templateUrl:'views/updateprofilepicture.html'
+	})
+			
 
 	.otherwise({
 		templateUrl:'views/home.html'
