@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,11 +25,8 @@
 	rel="stylesheet" />
 
 
- <li><a href="#profilepic" ng-show="loggedInUser.firstname">
-                    <img src="http://localhost:8080/project2middleware/getprofilepic/{{loggedInUser.email}}" alt="upload Picture" width="30px" height="30px" class="img-rounded">
-                    </a></li>
 
-<!--<script type="text/javascript"
+<script type="text/javascript"
 	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.js"></script>
 	  
 	
@@ -40,11 +36,10 @@
 	  
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
       <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css">
-     
--->
+   
 
 	
-<link href="/resource/css/color.css"=rel="stylesheet">
+<link href="http://localhost:8055/sociaalnetworkmiddleware/resources/css/color.css"=rel="stylesheet">
 </head> 
 <body ng-app="app">
 <header>
@@ -61,9 +56,10 @@
                 <div class="navbar-header">
                     <a class="navbar-brand" href="#/"><img src="resources/images/s1.jpg" width="130" height="30"></a>
                 </div>
-<div class="collapse navbar-collapse" id="collapse-example">
+ <div class="collapse navbar-collapse" id="collapse-example">
                 <ul class="nav navbar-nav ">
            <li><a href="#/home">Home</a></li>
+           
            
 <li class="dropdown"><a href="" class="dropdown-toggle"
 		data-toggle="dropdown" ng-show="loggedInUser.firstname!=undefined">Job<b class="caret"></b></a>
@@ -81,10 +77,17 @@
 				<li><a href="#/blogswaitingforapproval" ng-show="loggedInUser.role=='ADMIN'">Blogs Waiting For Approval</a>
 		        
             </ul></li>
-                          
-                    
+                       
+            <li class="dropdown"><a href="" class="dropdown-toggle"
+            data-toggle="dropdown" ng-show="loggedInUser.firstname!=undefined">Friend<b class="caret"></b></a>
+             <ul class="dropdown-menu">
+             <li><a href="#/suggestedusers">Friend Suggestions</a></li>
+              <li><a href="#/pendingrequests">Pending Requests </a></li>
+              <li><a href="#/friends">Friends</a></li>
+                
+             </ul></li>
             
-           <li><a href="#/updateprofilepic"><img src ="http://localhost:8090/socialnetworkmiddleware/getimage/{{loggedInUser.email}}"alt="UploadProfilePic"></a></li>
+           <li><a href="#/uploadprofilepic"><img src ="http://localhost:8055/socialnetworkmiddleware/getimage/{{loggedInUser.email}}" alt="UploadProfilePic" height="35px" width="35px"></a></li>
            <li><a href="#/updateprofile" ng-show="loggedInUser.firstname!=undefined">Welcome {{loggedInUser.firstname}} &nbsp; {{loggedInUser.lastname}}</a></li>
            <li><a href="" ng-click="logout()" ng-show="loggedInUser.firstname!=undefined">Sign out</a></li>
            <li><a href="#/registration" ng-show="loggedInUser.firstname==undefined">Sign Up</a></li>
@@ -116,9 +119,7 @@
 <script type="text/javascript" src="controllers/blogpostcontroller.js"></script>
 <script type="text/javascript" src="services/blogservice.js"></script>
 <script type="text/javascript" src="controllers/blogindetailcontroller.js"></script>
-
-
-
-
-</html>
-
+ 
+ <script type="text/javascript" src="controllers/friendcontroller.js"></script>
+<script type="text/javascript" src="services/friendservice.js"></script>
+  

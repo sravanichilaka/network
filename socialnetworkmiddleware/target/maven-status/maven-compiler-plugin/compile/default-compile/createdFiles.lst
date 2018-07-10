@@ -1,4 +1,5 @@
 com\niit\controllers\UserController.class
 com\niit\controllers\ProfilePictureController.class
 com\niit\controllers\BlogPostController.class
+com\niit\controllers\FriendController.class
 com\niit\controllers\JobController.class

@@ -1,37 +1,38 @@
-
-<!==blog which are approved ==>
 <div class="panel panel-info">
 <div class="panel-heading">
 <b>{{blogPost.blogTitle}}</b><br>
 <b>PostedOn:{{blogPost.postedOn | date:'medium'}}</b><br>
 <b>PostedBy:{{blogPost.postedBy.firstname}} &nbsp; {{blogPost.postedBy.lastname}} </b>
-<img src="http://localhost:8090/socialnetworkmiddleware/getimage/{{blogPost.postedBy.email}}">
 <br>
+<img src="http://localhost:8055/socialnetworkmiddleware/getimage/{{blogPost.postedBy.email}}" width="90px" height="90px">
 </div>
 <div class="panel panel-body">
 
 <p ng-bind-html="content"></p>
 
 </div>
-{{isliked}}
-<a ng-click="updateBlogPostLikes(blogPost.id)"> <span class="glyphicon glyphicon-thumbs-up"  ng-class="isLiked?'liked':'default'"></span></a>
-
-{{blogPost.likes}}  likes<br>
-
+{{isLiked}}
+<a ng-click="updateBlogPostLikes(blogPost.id)"><span class="glyphicon glyphicon-thumbs-up" ng-class="isLiked?'liked':'default'"></span></a>
+	{{blogPost.likes}} likes
+	
 <div>
-<textarea  rows="4 cols"20" ng-model="commentTxt"></textarea>
-<button class="btn  btn-primary" ng-click="addComment">Post Comment</button>
+<textarea rows="4" cols="20" ng-model="commentTxt"></textarea>
+<br>
+<button class="btn btn-primary" ng-click="addComment()">Post Comment</button>
 <a ng-click="showComments()">Show Comments</a>
 </div>
-<div>
+
+
 <div ng-show="showCommentsIsClicked">
 
-<ul style="list-style:none">
-<li ng-repeat=" comment in blogComments  |orderBy:'-commentedOn'">
 
-  <b>{{comment.commentTxt}}</b>&nbsp; &nbsp;<b>PostedBy:-</b>{{comment.commentedBy.firstname}}&nbsp;{{comment.commentedBy.lastname}},&nbsp; &nbsp;<b>Posted On:-</b>{{comment.commentedOn | date:'medium'}}
- </li>
+<ul>
+ <li ng-repeat="comment in blogComments | orderBy:'-commentedOn'"> 
+<b>{{comment.commentTxt}},</b>&nbsp; &nbsp;<b>Posted By-</b>{{comment.commentedBy.firstname}}&nbsp;{{comment.commentedBy.lastname}},&nbsp;&nbsp;<b>Posted On-</b>{{comment.commentedOn | date:'medium'}} </li>
+
+
 </ul>
+</div>
 </div>
 
 </div>

@@ -1,28 +1,20 @@
 package com.niit.configuration;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
-
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-//dispatcher-servlet.xml in project 1
 @Configuration
-@EnableWebMvc   //<mvc:annotation-driven>
+@EnableWebMvc  //<mvc:annotation-driven> tag in dispatcher-servlet.xml
 @ComponentScan(basePackages="com.niit")
-public class WebConfiguratin extends WebMvcConfigurerAdapter
-{
-
-	public WebConfiguratin(){
-	System.out.println("WEBCONFIG class is instantiated");
+//similar to dispatcher-servlet.xml
+public class WebConfiguratin extends WebMvcConfigurerAdapter{
+public WebConfiguratin(){
+	System.out.println("WebAppConfig class is instantiated");
 }
-	
-	@Bean(name="MultipartResolver")
+@Bean(name="multipartResolver")
 public CommonsMultipartResolver getCommonsMultipartResolver(){
 	return new CommonsMultipartResolver();
 }
-
 }
-
-

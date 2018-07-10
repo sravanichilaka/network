@@ -15,7 +15,7 @@ public class BlogComment {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 private int commentId;
 @ManyToOne
-private BlogPost blogpost;
+private BlogPost blogPost;
 @ManyToOne
 private User commentBy;
 private String commentTxt;
@@ -26,11 +26,11 @@ public int getCommentId() {
 public void setCommentId(int commentId) {
 	this.commentId = commentId;
 }
-public BlogPost getBlogpost() {
-	return blogpost;
+public BlogPost getBlogPost() {
+	return blogPost;
 }
-public void setBlogpost(BlogPost blogpost) {
-	this.blogpost = blogpost;
+public void setBlogPost(BlogPost blogPost) {
+	this.blogPost = blogPost;
 }
 public User getCommentBy() {
 	return commentBy;
@@ -50,4 +50,5 @@ public Date getCommentedOn() {
 public void setCommentedOn(Date commentedOn) {
 	this.commentedOn = commentedOn;
 }
+
 }

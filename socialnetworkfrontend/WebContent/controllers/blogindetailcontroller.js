@@ -14,7 +14,7 @@ app.controller('BlogInDetailCtrl', function($scope,$location,BlogService,$rootSc
 		$scope.blogPost=response.data
 		$scope.content=$sce.trustAsHtml($scope.blogPost.blogContent)
 		
-	}, function(resonse){
+	}, function(response){
 		$scope.error=response.data
 		if(response.status==401)
 			$location.path('/login')
@@ -26,7 +26,7 @@ app.controller('BlogInDetailCtrl', function($scope,$location,BlogService,$rootSc
 	
 		//response.data	-> select*from blogostlikes where blogpost_id=? and user_email=?
 
-		if (response.data='')
+		if (response.data=='')
 			$scope.isLiked=false //glyphicon color is black
 			else
 				$scope.isLiked=true // gliyplicon color is blue
@@ -64,7 +64,8 @@ app.controller('BlogInDetailCtrl', function($scope,$location,BlogService,$rootSc
 	
 	$scope.updateBlogPostLikes=function(blogPostId){
 		BlogService.updateBlogPostLikes(blogPostId).then(function(response){
-			
+			$scope.blogPost=response.data //updated blogpost object
+			$scope.isLiked=!$scope.isLiked
 		},function(response){
 			$scope.error=response.data
 			if(response.status==401)
@@ -72,19 +73,22 @@ app.controller('BlogInDetailCtrl', function($scope,$location,BlogService,$rootSc
 		})
 		}
 
-	$scope. addComment=function(){ 
+	$scope.addComment=function(){ 
 		//id is the  id of  the  blogpost
 		//commentTxt is the comment entered  by the user
-			
-		BlogServive.addComment($scope.commentTxt,id).then(function(response){
+		BlogService.addComment($scope.commentTxt,id).then(
+		
+			function(response){
+				alert('comment posted successfully')
 			$scope.commentTxt=''
 			getAllBlogComments()
-		},function(response){
 			
+		},function(response){
 			$scope.error=response.data
 			if(response.status==401)
 				$location.path('/login')
-}) 
+		})
+		
 	}
 	function getAllBlogComments(){
 		BlogService.getAllBlogComments(id).then(function(response){
