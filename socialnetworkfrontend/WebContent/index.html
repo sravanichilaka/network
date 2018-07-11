@@ -88,6 +88,7 @@
              </ul></li>
             
            <li><a href="#/uploadprofilepic"><img src ="http://localhost:8055/socialnetworkmiddleware/getimage/{{loggedInUser.email}}" alt="UploadProfilePic" height="35px" width="35px"></a></li>
+           <li><a href="#/chat" ng-show="loggedInUser.firstname">Chat Room </a></li>	
            <li><a href="#/updateprofile" ng-show="loggedInUser.firstname!=undefined">Welcome {{loggedInUser.firstname}} &nbsp; {{loggedInUser.lastname}}</a></li>
            <li><a href="" ng-click="logout()" ng-show="loggedInUser.firstname!=undefined">Sign out</a></li>
            <li><a href="#/registration" ng-show="loggedInUser.firstname==undefined">Sign Up</a></li>
@@ -122,4 +123,9 @@
  
  <script type="text/javascript" src="controllers/friendcontroller.js"></script>
 <script type="text/javascript" src="services/friendservice.js"></script>
+  <script type="text/javascript" src="services/chatservice.js"></script>
+<script type="text/javascript" src="controllers/chatcontroller.js"></script>
+
+<script type="text/javascript" src="js/sockjs/sockjs.min.js"></script>
+	<script type="text/javascript" src="js/stomp/dist/stomp.min.js"></script>
   

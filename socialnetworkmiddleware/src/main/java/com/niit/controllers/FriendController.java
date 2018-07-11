@@ -62,12 +62,12 @@ public ResponseEntity<?> addFriend(@RequestBody User toIdValue,HttpSession sessi
 }
 @RequestMapping(value="/pendingrequests",method=RequestMethod.GET)
 public ResponseEntity<?> getPendingRequests(HttpSession session){
-//	String email=(String)session.getAttribute("email"); 
-  //if(email==null){
-	//  ErrorClazz errorClazz=new ErrorClazz(7,"Unauthorized access..please login");
-	  //return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);
-//}
-String email="sravani@gmail.com";
+	String email=(String)session.getAttribute("email"); 
+  if(email==null){
+	 ErrorClazz errorClazz=new ErrorClazz(7,"Unauthorized access..please login");
+	  return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);
+}
+
 	List<Friend> pendingRequests=friendDao.pendingRequests(email);
 	return new ResponseEntity<List<Friend>>(pendingRequests,HttpStatus.OK);
 	//List<Friend> -> pendingRequests
