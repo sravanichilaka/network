@@ -6,23 +6,23 @@ app.factory('FriendService',function($http){
 	
 	
 	friendService.getSuggestedUsers=function(){
-		return $http.get("http://localhost:8055/sociaalnetworkmiddleware/suggestedusers")
+		return $http.get("http://localhost:8055/socialnetworkmiddleware/suggestedusers")
 		
 	}	
 	friendService.sendFriendRequest=function(toIdValue){// toIdValue is User object
-		return $http.post("http://localhost:8055/sociaalnetworkmiddleware/addfriend",toIdValue)
+		return $http.post("http://localhost:8055/socialnetworkmiddleware/addfriend",toIdValue)
 		
 	}	
 	friendService.getPendingRequests=function(){
-		return $http.get("http://localhost:8055/sociaalnetworkmiddleware/pendingrequests")
+		return $http.get("http://localhost:8055/socialnetworkmiddleware/pendingrequests")
 		
 	}	
 	friendService.updateStatus=function(updatedFriendRequest){
-		return $http.put("http://localhost:8055/sociaalnetworkmiddleware/updatestatus",updatedFriendRequest)
+		return $http.put("http://localhost:8055/socialnetworkmiddleware/updatestatus",updatedFriendRequest)
 		
 	}	
 	friendService.getAllFriends=function(){
-		return $http.get("http://localhost:8055/sociaalnetworkmiddleware/friends")
+		return $http.get("http://localhost:8055/socialnetworkmiddleware/friends")
 		
 	}	
 

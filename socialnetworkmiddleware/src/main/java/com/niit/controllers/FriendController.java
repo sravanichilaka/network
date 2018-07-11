@@ -23,61 +23,78 @@ import com.niit.model.User;
 @RestController
 public class FriendController {
 	public FriendController(){
-		System.out.println("Friend Controller bean is created");
+		System.out.println("Frnd	Controller bean is created");
 	}
 	
 	@Autowired
 	private FriendDao friendDao;
 	@Autowired
 	private UserDao userDao;
-	@RequestMapping(value="/suggestedusers",method=RequestMethod.GET)
+	
+@RequestMapping(value="/suggestedusers",method=RequestMethod.GET)
 public ResponseEntity<?> getSuggestedUsers(HttpSession session){
+	String email=(String)session.getAttribute("email"); 
+	if(email==null){
+	  ErrorClazz errorClazz=new ErrorClazz(7,"Unauthorized access..please login");
+	  return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);
+}
+	
+	List<User> suggestedUsers=friendDao.getSuggestedUsers(email);
+return new ResponseEntity<List<User>>(suggestedUsers,HttpStatus.OK);
+}
+
+
+@RequestMapping(value="/addfriend",method=RequestMethod.POST)
+public ResponseEntity<?> addFriend(@RequestBody User toIdValue,HttpSession session){
 	String email=(String)session.getAttribute("email"); 
 	if(email==null){
 		ErrorClazz errorClazz=new ErrorClazz(7,"Unauthorized access..please login");
 	return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);
 	}
-		
-	List<User> suggestedUsers=friendDao.getSuggestedUsers(email);
-return new ResponseEntity<List<User>>(suggestedUsers,HttpStatus.OK);
-}
-	@RequestMapping(value="/addfriend",method=RequestMethod.POST)
-	public ResponseEntity<?> addFriend(@RequestBody User toIdValue,HttpSession session){
-		String email=(String)session.getAttribute("email"); 
-		if(email==null){
-			ErrorClazz errorClazz=new ErrorClazz(7,"Unauthorized access..please login");
-		return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);
-		}
-		User fromId=userDao.getUser(email);
-		Friend friend=new Friend();
-		friend.setFromId(fromId);
-		friend.setToId(toIdValue);
-		friend.setStatus('P');
-		friendDao.addFriend(friend);
-		
-		return new ResponseEntity<Void>(HttpStatus.OK);
-	}
-	@RequestMapping(value="/pendingrequests",method=RequestMethod.GET)
- 	public ResponseEntity<?> getPendingRequests(HttpSession session){
-		String email=(String)session.getAttribute("email"); 
-		if(email==null){
-			ErrorClazz errorClazz=new ErrorClazz(7,"Unauthorized access..please login");
-		return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);
-		}
-		
-		List<Friend> pendingRequests=friendDao.pendingRequests(email);
-		return new ResponseEntity<List<Friend>>(pendingRequests,HttpStatus.OK);
-	}
-	@RequestMapping(value="/updatestatus",method=RequestMethod.PUT)
-	public ResponseEntity<?> updateStatus(@RequestBody Friend friendRequest,HttpSession session){
-		String email=(String)session.getAttribute("email"); 
-		if(email==null){
-			ErrorClazz errorClazz=new ErrorClazz(7,"Unauthorized access..please login");
-		return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);
-		}
-		friendDao.updateStatus(friendRequest);
-		return new ResponseEntity<Void>(HttpStatus.OK);
-		
-	}
+	User fromId=userDao.getUser(email);
+	Friend friend=new Friend();
+	friend.setFromId(fromId);
+	friend.setToId(toIdValue);
+	friend.setStatus('P');
+	friendDao.addFriend(friend);
 	
+	return new ResponseEntity<Void>(HttpStatus.OK);
+}
+@RequestMapping(value="/pendingrequests",method=RequestMethod.GET)
+public ResponseEntity<?> getPendingRequests(HttpSession session){
+//	String email=(String)session.getAttribute("email"); 
+  //if(email==null){
+	//  ErrorClazz errorClazz=new ErrorClazz(7,"Unauthorized access..please login");
+	  //return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);
+//}
+String email="sravani@gmail.com";
+	List<Friend> pendingRequests=friendDao.pendingRequests(email);
+	return new ResponseEntity<List<Friend>>(pendingRequests,HttpStatus.OK);
+	//List<Friend> -> pendingRequests
+}
+
+
+@RequestMapping(value="/updatestatus",method=RequestMethod.PUT)
+public ResponseEntity<?> updateStatus(@RequestBody Friend friendRequest,HttpSession session){
+	String email=(String)session.getAttribute("email"); 
+	if(email==null){
+	  ErrorClazz errorClazz=new ErrorClazz(7,"Unauthorized access..please login");
+	  return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);
+}
+   friendDao.updateStatus(friendRequest);
+   return new ResponseEntity<Void>(HttpStatus.OK);
+ }
+
+
+@RequestMapping(value="/friends",method=RequestMethod.GET)
+public ResponseEntity<?> getAllFriends(HttpSession session){
+	String email=(String)session.getAttribute("email"); 
+	if(email==null){
+	  ErrorClazz errorClazz=new ErrorClazz(7,"Unauthorized access..please login");
+	  return new ResponseEntity<ErrorClazz>(errorClazz,HttpStatus.UNAUTHORIZED);
+}
+        List<Friend> friends=friendDao.getAllFriends(email);
+        return new ResponseEntity<List<Friend>>(friends,HttpStatus.OK);
+	
+}
 }
